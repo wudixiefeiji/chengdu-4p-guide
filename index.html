@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>成都集结·分头行动 4人攻略（9.6-9.10）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    background:#faf6f0; color:#1f2d3d; line-height:1.75; font-size:15px;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap { max-width:720px; margin:0 auto; padding-bottom:60px; }
+  .hero {
+    background:linear-gradient(135deg,#b45309 0%,#d97706 45%,#ea580c 100%);
+    color:#fff; padding:36px 22px 30px; position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; right:-40px; top:-40px; width:180px; height:180px;
+    border-radius:50%; background:rgba(255,255,255,.08);
+  }
+  .hero::before{
+    content:""; position:absolute; right:30px; bottom:-60px; width:140px; height:140px;
+    border-radius:50%; background:rgba(255,255,255,.06);
+  }
+  .hero h1 { font-size:23px; font-weight:700; letter-spacing:1px; position:relative; z-index:1; }
+  .hero .sub { margin-top:8px; font-size:14px; opacity:.94; position:relative; z-index:1; }
+  .hero .tags { margin-top:14px; position:relative; z-index:1; }
+  .hero .tags span {
+    display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    border-radius:20px; padding:3px 12px; font-size:12px; margin:3px 6px 0 0;
+  }
+  .card {
+    background:#fff; border-radius:14px; margin:14px 12px; padding:18px 16px;
+    box-shadow:0 2px 10px rgba(120,70,20,.07);
+  }
+  .card h2 { font-size:17px; color:#b45309; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .card h2 .ico { font-size:18px; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th { background:#fdf0e0; color:#b45309; font-weight:600; padding:8px 6px; text-align:left; }
+  td { padding:8px 6px; border-bottom:1px solid #f5ede4; vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  .price { color:#c2410c; font-weight:600; white-space:nowrap; }
+  .day { background:#fff; border-radius:14px; margin:14px 12px; overflow:hidden; box-shadow:0 2px 10px rgba(120,70,20,.07); }
+  .day-head { padding:12px 16px; color:#fff; display:flex; align-items:center; justify-content:space-between; }
+  .day-head .d-title { font-size:16px; font-weight:700; }
+  .day-head .d-date { font-size:12px; opacity:.9; }
+  .bg-1 { background:linear-gradient(90deg,#0369a1,#0284c7); }
+  .bg-2 { background:linear-gradient(90deg,#b45309,#d97706); }
+  .bg-3 { background:linear-gradient(90deg,#7c3aed,#a855f7); }
+  .bg-4 { background:linear-gradient(90deg,#0f766e,#14b8a6); }
+  .bg-5 { background:linear-gradient(90deg,#be185d,#ec4899); }
+  .day-body { padding:14px 16px 6px; }
+  .tl { position:relative; padding-left:18px; }
+  .tl::before { content:""; position:absolute; left:5px; top:6px; bottom:6px; width:2px; background:#ecdcC8; border-radius:2px; }
+  .tl-item { position:relative; margin-bottom:14px; }
+  .tl-item::before {
+    content:""; position:absolute; left:-17px; top:7px; width:9px; height:9px; border-radius:50%;
+    background:#d97706; border:2px solid #fff; box-shadow:0 0 0 1px #d97706;
+  }
+  .tl-time { font-size:12.5px; color:#b45309; font-weight:700; }
+  .tl-tit { font-size:14.5px; font-weight:600; margin:2px 0; }
+  .tl-txt { font-size:13.5px; color:#4b5b66; }
+  .tl-txt b { color:#1f2d3d; }
+  .info-chip {
+    display:inline-block; font-size:12px; background:#fffbeb; color:#b45309;
+    border:1px solid #fde68a; border-radius:6px; padding:2px 8px; margin:4px 4px 0 0;
+  }
+  .warn-chip {
+    display:inline-block; font-size:12px; background:#fff7ed; color:#c2410c;
+    border:1px solid #fed7aa; border-radius:6px; padding:2px 8px; margin:4px 4px 0 0;
+  }
+  .buy-chip {
+    display:inline-block; font-size:12px; background:#fef2f2; color:#b91c1c;
+    border:1px solid #fecaca; border-radius:6px; padding:2px 8px; margin:4px 4px 0 0;
+  }
+  .note {
+    border-left:4px solid #d97706; background:#fffbeb; border-radius:0 8px 8px 0;
+    padding:10px 12px; margin:10px 0; font-size:13.5px; color:#92400e;
+  }
+  .note.red { border-color:#ef4444; background:#fef2f2; color:#991b1b; }
+  .note.teal { border-color:#0d9488; background:#f0fdfa; color:#115e59; }
+  .split { display:flex; gap:10px; margin:10px 0; flex-wrap:wrap; }
+  .split .plan {
+    flex:1 1 260px; border-radius:10px; padding:12px 14px; font-size:13.5px;
+  }
+  .plan.a { background:#f0fdfa; border:1.5px solid #99f6e4; color:#115e59; }
+  .plan.b { background:#f5f3ff; border:1.5px solid #ddd6fe; color:#5b21b6; }
+  .plan h4 { font-size:14.5px; margin-bottom:6px; }
+  .check { list-style:none; }
+  .check li { padding:5px 0 5px 26px; position:relative; font-size:13.5px; border-bottom:1px dashed #f0e8dd; }
+  .check li:last-child { border-bottom:none; }
+  .check li::before { content:"✔"; position:absolute; left:2px; top:5px; color:#d97706; font-weight:700; }
+  .sec-title {
+    margin:26px 16px 4px; font-size:18px; font-weight:700; color:#1f2937;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sec-title::before { content:""; width:5px; height:18px; background:#d97706; border-radius:3px; }
+  .footer { text-align:center; font-size:12px; color:#b3a08c; padding:24px 16px 10px; }
+  .route-map {
+    background:#fdf0e0; border-radius:10px; padding:12px 14px; font-size:13.5px; color:#7c2d12;
+    margin:8px 0; line-height:2;
+  }
+  .hl { background:#fef08a; padding:0 3px; border-radius:3px; }
+  a.btn {
+    display:inline-block; margin-top:8px; background:#0f766e; color:#fff; text-decoration:none;
+    font-size:13.5px; border-radius:8px; padding:7px 14px; font-weight:600;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>🧳 成都集结 · 分头行动（4人版）</h1>
+    <div class="sub">深圳 ⇄ 成都 | 2026.9.6（周日）— 9.10（周四）</div>
+    <div class="tags">
+      <span>👥 4人同行</span>
+      <span>🛬 分别落天府/双流机场</span>
+      <span>🏙️ 9.6-9.7 成都集结</span>
+      <span>✈️ 9.8 分头行动</span>
+      <span>🎓 民航飞行学院报道</span>
+    </div>
+  </div>
+
+  <div class="sec-title">行程总览</div>
+  <div class="card">
+    <table>
+      <tr><th>日期</th><th>你（A线）</th><th>其他3人（B线）</th></tr>
+      <tr><td><b>9.6 周日</b></td><td colspan="2">分别落地天府/双流 → 汇合春熙路酒店 → 太古里 + 火锅（4人同行）</td></tr>
+      <tr><td><b>9.7 周一</b></td><td colspan="2">人民公园喝茶 → 宽窄巷子 → 锦里/武侯祠 → 九眼桥夜景（4人同行）</td></tr>
+      <tr><td><b>9.8 周二</b></td><td>高铁进川西，顺游黄龙，宿漳扎镇</td><td>赴广汉·中国民用航空飞行学院新生报道，报道完回成都</td></tr>
+      <tr><td><b>9.9 周三</b></td><td>九寨沟一整日</td><td>熊猫基地 → 文殊院 → 建设路夜市</td></tr>
+      <tr><td><b>9.10 周四</b></td><td>早班高铁回成都，16:00前到天府机场</td><td>春熙路买特产 → 按航班时间赴机场飞深圳</td></tr>
+    </table>
+    <div class="note teal" style="margin-top:12px">
+      💡 <b>行李分工关键</b>：B线3人 9.8 去报道只需带「报道材料 + 2天换洗衣物」的轻装背包，<b>大件行李全部寄存在成都酒店前台</b>（免费），报道完当天回成都住，不用拖着行李进校园。
+    </div>
+  </div>
+
+  <div class="sec-title">Day 1 · 9.6（周日）落地集结</div>
+  <div class="day">
+    <div class="day-head bg-1"><span class="d-title">🛬 分别落地 → 汇合春熙路</span><span class="d-date">9.6 周日</span></div>
+    <div class="day-body">
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-time">落地后</div>
+          <div class="tl-tit">两条路线去春熙路（按各自落地机场走）</div>
+          <div class="tl-txt">
+            <b>双流机场出发</b>：地铁10号线 → 太平园换3号线 → 春熙路站，约40分钟，5元<br>
+            <b>天府机场出发</b>：地铁18号线 → 火车南站换1号线 → 省体育馆换3号线 → 春熙路站，约75分钟，9元；3-4人同行<b>直接打车更划算</b>，约45分钟 / 130元左右
+          </div>
+          <span class="info-chip">🚇 全程刷天府通App或支付宝乘车码</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">15:00左右</div>
+          <div class="tl-tit">酒店汇合 + 寄存行李</div>
+          <div class="tl-txt">住<b>春熙路地铁站附近</b>（连住3晚不挪窝，B线报道寄存行李也方便）。4人订<b>两间双床房</b>：全季/亚朵/桔子 300-450元/间/晚，<span class="hl">务必提前订9月旺季房源</span></div>
+          <span class="buy-chip">🏨 提前在美团/携程订9.6-9.9共3晚×2间</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">16:00-18:30</div>
+          <div class="tl-tit">太古里 + IFS 爬墙熊猫</div>
+          <div class="tl-txt">酒店步行即到。IFS楼顶看爬墙熊猫屁股拍照，太古里逛逛，大慈寺可顺路一看（免费）</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">19:00</div>
+          <div class="tl-tit">🔥 第一顿：火锅（成都之夜的仪式感）</div>
+          <div class="tl-txt">推荐<b>蜀大侠</b>（春熙路群光广场）或<b>小龙坎</b>，4人点鸳鸯锅，人均100-130元。<span class="hl">周末晚上排队凶，17:30先去取号再回酒店休息</span>；吃不了辣提前说微辣</div>
+          <span class="warn-chip">⏰ 周日晚高峰，务必提前取号</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Day 2 · 9.7（周一）成都经典一日</div>
+  <div class="day">
+    <div class="day-head bg-2"><span class="d-title">🍵 喝茶·巷子·夜景</span><span class="d-date">9.7 周一</span></div>
+    <div class="day-body">
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-time">09:30-11:30</div>
+          <div class="tl-tit">人民公园 · 鹤鸣茶社</div>
+          <div class="tl-txt">地铁3号线春熙路→人民公园站2站。盖碗茶20-30元坐半天，体验成都采耳（30-50元，自愿）。本地人作息，感受「成都慢」</div>
+          <span class="info-chip">🎫 人民公园免费，茶位现付</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:00-13:30</div>
+          <div class="tl-tit">午饭：奎星楼街小吃街</div>
+          <div class="tl-txt">人民公园步行15分钟。推荐<b>冒椒火辣</b>（串串）、<b>甜水面</b>、蛋烘糕、糖油果子，人均40-60元，吃小吃当正餐</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:00-16:30</div>
+          <div class="tl-tit">宽窄巷子</div>
+          <div class="tl-txt">奎星楼街步行10分钟。三条巷子逛宽巷子+窄巷子即可，井巷子可跳过。里面消费偏贵，<b>拍照逛街为主，别在里面买特产</b>（最后一天春熙路买更便宜）</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:00-20:00</div>
+          <div class="tl-tit">武侯祠 → 锦里</div>
+          <div class="tl-txt">打车15分钟约15元。<b>武侯祠门票50元</b>（公众号「成都武侯祠」或现场购，三义庙+刘备殿，三国爱好者值得）；锦里免费，傍晚红灯笼亮起最好看，晚餐在锦里解决小吃</div>
+          <span class="buy-chip">🎫 武侯祠50元，可现场买，节假日才需预约</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">20:30</div>
+          <div class="tl-tit">九眼桥夜景（可选）</div>
+          <div class="tl-txt">打车过去看锦江夜景、安顺廊桥拍照，不进酒吧消费的话0元。走完这趟成都「白天+夜晚」就集齐了</div>
+        </div>
+      </div>
+      <div class="note">💡 9.7是周一，熊猫基地人少，但B线留给9.9去；如果4人想全员一起看熊猫，也可以把今天改成熊猫基地+下午鹤鸣茶社，把武侯祠锦里挪到9.9——二选一，看你们更想哪天看熊猫。</div>
+    </div>
+  </div>
+
+  <div class="sec-title">Day 3 · 9.8（周二）分头行动 🚀</div>
+  <div class="card">
+    <h2><span class="ico">🔀</span>今天开始各走各的</h2>
+    <div class="split">
+      <div class="plan a">
+        <h4>✈️ 方案A · 你（九寨沟线）</h4>
+        早上5:45起床 → 成都东站 C6362（08:12→10:01黄龙九寨站）→ 顺游黄龙（索道上步行下，看五彩池）→ 傍晚车3小时到漳扎镇住宿 → 9.9 九寨沟一整日 → 9.10 早班高铁回成都，16:00前到天府机场。<br>
+        门票预约、预算、行李清单都在完整攻略里👇
+        <br><a class="btn" href="https://wudixiefeiji.github.io/jiuzhaigou-guide/">打开九寨沟完整攻略</a>
+      </div>
+      <div class="plan b">
+        <h4>🎓 方案B · 其他3人（报道线）</h4>
+        轻装出发去广汉报道，大件行李寄存酒店前台。当天流程见下方时间轴👇
+      </div>
+    </div>
+  </div>
+  <div class="day">
+    <div class="day-head bg-3"><span class="d-title">🎓 B线：民航飞行学院报道日</span><span class="d-date">9.8 周二</span></div>
+    <div class="day-body">
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-time">07:00</div>
+          <div class="tl-tit">酒店出发，去成都东站</div>
+          <div class="tl-txt">地铁3号线春熙路→成都东站约25分钟。吃个早饭后赶9点左右的车</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">09:00-09:30</div>
+          <div class="tl-tit">🚄 成都东 → 广汉北</div>
+          <div class="tl-txt">成绵乐城际动车，约<b>20分钟</b>，二等座约12元，班次密集（基本每半小时一班，12306当天买也来得及，但建议提前买好）</div>
+          <span class="info-chip">🚄 票价约12元 | 12306购买</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">09:40</div>
+          <div class="tl-tit">广汉北站 → 中国民用航空飞行学院（广汉校区）</div>
+          <div class="tl-txt">出站打车约15分钟 / 15元左右。9.8是集中报道日，校门口有学长学姐接站，跟着指示走</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">10:00-13:00</div>
+          <div class="tl-tit">📋 报道流程</div>
+          <div class="tl-txt">校门口核验录取通知书 → 各学院报到点交材料领流程单 → 缴费/绿色通道 → 宿舍分配领钥匙 → 校内超市采购生活用品（被褥洗漱学校超市都有卖，不用从深圳背）</div>
+          <span class="warn-chip">⏰ 报道高峰在上午，越早到排队越少</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:00-15:00</div>
+          <div class="tl-tit">收拾宿舍，认识室友</div>
+          <div class="tl-txt">飞行学院是准军事化管理，宿舍内务有要求，第一天把床铺理好、听清辅导员通知（军训时间、体检安排等）</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">16:00</div>
+          <div class="tl-tit">广汉北 → 回成都</div>
+          <div class="tl-txt">动车回成都东，回到春熙路酒店约17:30。晚上3人去吃<b>马路边边串串</b>（人均60-80元），给同学送行</div>
+          <span class="buy-chip">🎫 返程动车票提前在12306买好（9.8下午广汉北→成都东）</span>
+        </div>
+      </div>
+      <div class="note red">⚠️ <b>报道材料清单（出发前逐项核对）：</b>
+        <ul class="check">
+          <li>录取通知书原件</li>
+          <li>身份证原件 + 正反面复印件4份</li>
+          <li>高考准考证（如通知书要求）</li>
+          <li>纸质档案袋 / 电子档案（按学校通知，勿拆封）</li>
+          <li>团员组织关系转接材料（智慧团建线上转+纸质介绍信）</li>
+          <li>一寸免冠照8张 + 两寸4张（蓝底白底都备）</li>
+          <li>户口迁移证（如选择迁户口，自愿）</li>
+          <li>银行卡（学费已存入通知书指定账户的带好回执）</li>
+          <li>少量现金500元 + 常用药品</li>
+          <li>军训用：运动鞋、皮带、防晒（成都9月初仍30°C+）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Day 4 · 9.9（周三）B线：熊猫 + 市井</div>
+  <div class="day">
+    <div class="day-head bg-4"><span class="d-title">🐼 熊猫基地 + 文殊院 + 夜市</span><span class="d-date">9.9 周三</span></div>
+    <div class="day-body">
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-time">07:30</div>
+          <div class="tl-tit">熊猫基地（务必赶早！）</div>
+          <div class="tl-txt">打车约30分钟/40元（或地铁3号线→熊猫大道站转景区摆渡车）。<b>只有早上8:00-10:30熊猫最活跃</b>，晚到基本看睡觉。重点看太阳产房、幼年熊猫别墅</div>
+          <span class="buy-chip">🎫 55元，公众号「成都大熊猫繁育研究基地」提前1-3天预约9.9早场</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:30</div>
+          <div class="tl-tit">午饭回市区：甘食记成都肥肠粉</div>
+          <div class="tl-txt">人均30元，肥肠粉+军屯锅盔+节子，成都老味道</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:30-16:30</div>
+          <div class="tl-tit">文殊院</div>
+          <div class="tl-txt">免费，千年古刹，院内喝茶10元一位，旁边香园吃素斋或宫廷糕点铺（本地人排队王，买桃酥伴手）</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">18:00-21:00</div>
+          <div class="tl-tit">建设路小吃街夜市</div>
+          <div class="tl-txt">本地学生党地盘：傅记排骨、降龙爪爪、锅巴土豆、冰粉，人均50元吃到扶墙。最后一晚犒劳自己</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Day 5 · 9.10（周四）返程日</div>
+  <div class="day">
+    <div class="day-head bg-5"><span class="d-title">🛫 B线：买特产 → 赴机场</span><span class="d-date">9.10 周四</span></div>
+    <div class="day-body">
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-time">09:00-11:00</div>
+          <div class="tl-tit">春熙路买特产 + 退房</div>
+          <div class="tl-txt">IFS楼下「熊猫屋」买熊猫周边，超市买张飞牛肉、灯影牛肉丝、郫县豆瓣、竹叶青茶。<b>退房时取回寄存的大件行李</b></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">按航班</div>
+          <div class="tl-tit">出发赴机场（看清是哪个机场！）</div>
+          <div class="tl-txt">
+            <b>双流机场</b>：地铁10号线直达，春熙路出发约50分钟，建议<b>起飞前3小时</b>出发<br>
+            <b>天府机场</b>：地铁18号线直达天府机场站，约1小时10分，建议<b>起飞前3.5-4小时</b>出发（天府太远，别掐点）<br>
+            3人拼车打车：双流约60元 / 天府约130元
+          </div>
+          <span class="warn-chip">✈️ 天府机场非常大，值机柜台步行10分钟起，宁可早到</span>
+        </div>
+      </div>
+      <div class="note teal">✈️ A线（你）：9.10 早上6:00漳扎镇出发 → C5784（09:04→10:45成都东）→ 打车赴天府机场，约12:30到，赶下午航班回深圳。详细按九寨沟攻略执行。</div>
+    </div>
+  </div>
+
+  <div class="sec-title">吃在成都 · 4人口碑清单</div>
+  <div class="card">
+    <table>
+      <tr><th>吃啥</th><th>推荐店（都在市区）</th><th>人均</th></tr>
+      <tr><td>火锅</td><td>蜀大侠（群光广场）/ 小龙坎</td><td class="price">100-130元</td></tr>
+      <tr><td>串串香</td><td>马路边边 / 冒椒火辣（奎星楼街）</td><td class="price">60-80元</td></tr>
+      <tr><td>冒菜</td><td>芙蓉树下 / 街边任意冒菜（午餐快选项）</td><td class="price">25-40元</td></tr>
+      <tr><td>肥肠粉</td><td>甘食记（文殊院附近）</td><td class="price">30元</td></tr>
+      <tr><td>小吃</td><td>蛋烘糕、糖油果子、甜水面、冰粉、兔头</td><td class="price">10-20元/样</td></tr>
+      <tr><td>夜市</td><td>建设路小吃街（学生食堂价）</td><td class="price">50元扶墙出</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title">预算参考（每人，不含机票）</div>
+  <div class="card">
+    <table>
+      <tr><th>项目</th><th>B线3人（成都线）</th><th>A线你（九寨沟线）</th></tr>
+      <tr><td>住宿</td><td class="price">约525元<br><span style="font-weight:400;color:#8aa0a5">（2间×3晚×350÷3人）</span></td><td class="price">约900元<br><span style="font-weight:400;color:#8aa0a5">（成都2晚分摊+漳扎镇1晚）</span></td></tr>
+      <tr><td>吃饭</td><td class="price">约700元</td><td class="price">约600元</td></tr>
+      <tr><td>交通</td><td class="price">约150元<br><span style="font-weight:400;color:#8aa0a5">（地铁+广汉往返+打车分摊）</span></td><td class="price">约500元<br><span style="font-weight:400;color:#8aa0a5">（高铁往返+直通车）</span></td></tr>
+      <tr><td>门票</td><td class="price">约105元（熊猫55+武侯祠50）</td><td class="price">约530元（九寨沟280+黄龙250）</td></tr>
+      <tr><td>合计</td><td class="price">约1500元</td><td class="price">约2500-3300元</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title">出发前必办清单</div>
+  <div class="card">
+    <ul class="check">
+      <li>🏨 订春熙路酒店：9.6入住9.9退房，2间双床房（B线3晚；A线你只住9.6-9.8两晚，可和酒店备注分开退或直接分开订）</li>
+      <li>🎫 买9.8成都东→广汉北动车票（12306，去程+当天返程都买好）</li>
+      <li>🎫 熊猫基地9.9早场预约（公众号「成都大熊猫繁育研究基地」）</li>
+      <li>🎫 你自己的：九寨沟9.9门票+观光车预约（公众号「九寨沟」）、黄龙9.8门票、12306买9.8 C6362和9.10 C5784</li>
+      <li>🎓 核对报道材料（照上面清单逐项打勾，复印件提前复印好，学校打印贵且排队）</li>
+      <li>📱 下载天府通App（成都地铁公交扫码）</li>
+      <li>🧴 成都9月初白天仍30°C+、偶有阵雨：短袖+薄外套+雨伞</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    成都集结·分头行动 4人攻略 · 2026.9.6-9.10 · 出发前再核对一遍车票和预约<br>
+    九寨沟完整攻略：wudixiefeiji.github.io/jiuzhaigou-guide
+  </div>
+</div>
+</body>
+</html>
